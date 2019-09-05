@@ -39,7 +39,8 @@ let menuItems = [
 
 
 
-const header = document.querySelector("img");
+const header = document.querySelector(".header");
+const menuButton = document.querySelector('.menu-button');
 
 
 
@@ -47,7 +48,7 @@ function menuCreator(menuItems) {
 
   const menuM = document.createElement('div');
   const menuUl = document.createElement('ul');
-  const menuButton = document.querySelector('.menu-button');
+  
 
   menuM.appendChild(menuUl);
   
@@ -59,15 +60,13 @@ function menuCreator(menuItems) {
     menuUl.appendChild(menuListItems); 
   })
 
-
   menuButton.addEventListener('click', (e) => {
     console.log('button clicked');
-    menuButton.classList.toggle('menu--open');
+    menuM.classList.toggle('menu--open');
   });
 
 
   return menuM
 };
-
 
 header.appendChild(menuCreator(menuItems));
