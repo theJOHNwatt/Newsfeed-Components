@@ -85,6 +85,13 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Pirate Ipsum',
+    date: 'September 3rd, 2019',
+    firstParagraph: 'Provost swing the lead Shiver me timbers American Main heave down Sea Legs list holystone scurvy belay. Ahoy to go on account topmast killick code of conduct flogging bring a         spring upon her cable spirits gibbet Nelsons folly. Gaff rutters ballast Blimey hearties hang the jib dead men tell no tales brigantine lateen sail run a rig. Cutlass lee grog                   square-rigged port stern transom draft long clothes Sail ho. Quarter nipperkin lad list me wench fire in the hole gally yard fathom. Run a shot across the bow gangplank measured fer yer         chains long boat scourge of the seven seas Brethren of the Coast Jack Ketch barque knave yard.',
+    secondParagraph: 'Chandler loaded to the gunwalls broadside hogshead galleon Privateer Yellow Jack man-of-war main sheet scourge of the seven seas. Schooner aye Pieces of Eight lugsail driver         man-of-war jury mast clipper prow scurvy. Arr piracy parley Shiver me timbers quarterdeck cackle fruit transom Nelsons folly capstan Sail ho. Lookout execution dock yardarm maroon Jolly         Roger fathom pirate pressgang draft grog blossom. Scuppers fire ship mutiny lugger avast crack Jennys tea cup interloper Jack Tar loot overhaul. Piracy Nelsons folly galleon ho poop deck        chandler quarterdeck bilge heave to lugger.',
+    thirdParagraph: 'Square-rigged bucko Shiver me timbers spirits salmagundi heave down bilge rat topgallant sutler galleon. Bucko scuttle Plate Fleet loaded to the gunwalls red ensign flogging          marooned loot swing the lead Nelsons folly. Lugger man-of-war avast cackle fruit gun Barbary Coast dance the hempen jig gunwalls quarterdeck grog blossom. To go on account chandler              schooner bilge water port long boat lad crack Jennys tea cup Brethren of the Coast lanyard. Topmast aft spyglass Pieces of Eight booty trysail tack red ensign grog heave to. Cackle fruit        mizzenmast line me furl Yellow Jack Cat onine tails gibbet grog trysail.'
   }
 ];
 
@@ -99,6 +106,8 @@ const data = [
     <span class='expandButton'></span>
   </div>
 
+ 
+
   Hint: You will need to use createElement more than once here!
 
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
@@ -112,3 +121,46 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function createArticle(title, date, firstParagraph, secondParagraph, thirdParagraph) {
+
+  const article = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const articleFirstP = document.createElement('p');
+  const articleSecondP = document.createElement('p');
+  const articleThirdP = document.createElement('p');
+  const articleButton = document.createElement('span');
+
+  article.appendChild(articleTitle);
+  article.appendChild(articleDate);
+  article.appendChild(articleFirstP);
+  article.appendChild(articleSecondP);
+  article.appendChild(articleThirdP);
+  article.appendChild(articleButton);
+
+  article.classList.add('article');
+  articleDate.classList.add('date');
+  articleButton.classList.add('expandButton');
+
+  articleTitle.textContent = title;
+  articleDate.textContent = date;
+  articleFirstP.textContent = firstParagraph;
+  articleSecondP.textContent = secondParagraph;
+  articleThirdP.textContent = thirdParagraph;
+
+
+  article.addEventListener('click', (e) => {
+    console.log('button clicked');
+    article.classList.toggle('article-open');
+    article.classList.toggle('close');
+  });
+
+  return article
+}
+
+const info = document.querySelector('.articles');
+
+data.forEach(item => {
+  info.appendChild(createArticle(item.title, item.date, item.firstParagraph, item.secondParagraph, item.thirdParagraph));
+});
