@@ -150,7 +150,7 @@ function createArticle(title, date, firstParagraph, secondParagraph, thirdParagr
   articleThirdP.textContent = thirdParagraph;
 
 
-  article.addEventListener('click', e => {
+  article.addEventListener('click', (e) => {
     console.log('button clicked');
     article.classList.toggle('article-open');
     article.classList.toggle('close');
